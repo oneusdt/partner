@@ -1,0 +1,67 @@
+.ranking {
+    height: 100%;
+    background-color: rgb(67, 67, 67);
+    min-height: 415px;
+    padding: 10px 20px;
+}
+
+.form-control,
+.input-group-addon {
+    border-radius: 0 !important;
+}
+
+::-webkit-scrollbar {
+    display: none;
+    /*隐藏滚动条*/
+}
+
+.content {
+    height: 100%;
+    background-color: rgb(67, 67, 67);
+    min-height: 415px;
+    padding: 10px 20px;
+}
+
+.count-input {
+    margin-top: 10px;
+}
+
+.line {
+    margin: 10px auto;
+    width: 90%;
+    border-top: 1px dotted #eea236;
+}
+
+.ranking span {
+    height: 30px;
+    line-height: 30px;
+}
+
+.modal-backdrop.in {
+    opacity: 0.85 !important;
+}
+
+.load {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 1050;
+    margin: auto;
+    height: 20px;
+    width: 80%;
+    text-align: center;
+}
+
+.fusing-error {
+    height: 20px;
+    color: white;
+}
+
+.progress-value {
+    color: #f0ad4e;
+    width: 100%;
+    text-align: center;
+    position: absolute;
+}

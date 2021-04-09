@@ -1,0 +1,831 @@
+<script type="text/javascript">
+	let dividendsAbi = [{
+        "inputs": [{
+                "internalType": "address",
+                "name": "owner",
+                "type": "address"
+            },
+            {
+                "internalType": "address",
+                "name": "techniDiviAddr",
+                "type": "address"
+            },
+            {
+                "internalType": "address",
+                "name": "callContractAddr",
+                "type": "address"
+            },
+            {
+                "internalType": "address",
+                "name": "ticketAddress",
+                "type": "address"
+            }
+        ],
+        "stateMutability": "nonpayable",
+        "type": "constructor"
+    },
+    {
+        "anonymous": false,
+        "inputs": [{
+                "indexed": true,
+                "internalType": "address",
+                "name": "playerAddr",
+                "type": "address"
+            },
+            {
+                "indexed": true,
+                "internalType": "uint256",
+                "name": "playerId",
+                "type": "uint256"
+            },
+            {
+                "indexed": false,
+                "internalType": "uint256",
+                "name": "_value",
+                "type": "uint256"
+            },
+            {
+                "indexed": true,
+                "internalType": "uint256",
+                "name": "bigPrizePoolCount",
+                "type": "uint256"
+            },
+            {
+                "indexed": false,
+                "internalType": "uint256",
+                "name": "smallPrizePoolCount",
+                "type": "uint256"
+            }
+        ],
+        "name": "LogInvestment",
+        "type": "event"
+    },
+    {
+        "anonymous": false,
+        "inputs": [{
+                "indexed": true,
+                "internalType": "address",
+                "name": "_from",
+                "type": "address"
+            },
+            {
+                "indexed": true,
+                "internalType": "address",
+                "name": "_to",
+                "type": "address"
+            },
+            {
+                "indexed": false,
+                "internalType": "uint256",
+                "name": "_value",
+                "type": "uint256"
+            }
+        ],
+        "name": "LogTransfer",
+        "type": "event"
+    },
+    {
+        "inputs": [],
+        "name": "_allInvestUsdt",
+        "outputs": [{
+            "internalType": "uint256",
+            "name": "",
+            "type": "uint256"
+        }],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [],
+        "name": "_callContractAddr",
+        "outputs": [{
+            "internalType": "address",
+            "name": "",
+            "type": "address"
+        }],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [],
+        "name": "_owner",
+        "outputs": [{
+            "internalType": "address",
+            "name": "",
+            "type": "address"
+        }],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [{
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+            },
+            {
+                "internalType": "address",
+                "name": "",
+                "type": "address"
+            }
+        ],
+        "name": "_playerAddrMap",
+        "outputs": [{
+            "internalType": "uint256",
+            "name": "",
+            "type": "uint256"
+        }],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [{
+            "internalType": "uint256",
+            "name": "",
+            "type": "uint256"
+        }],
+        "name": "_playerCount",
+        "outputs": [{
+            "internalType": "uint256",
+            "name": "",
+            "type": "uint256"
+        }],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [{
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+            },
+            {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+            }
+        ],
+        "name": "_playerMap",
+        "outputs": [{
+                "internalType": "uint256",
+                "name": "id",
+                "type": "uint256"
+            },
+            {
+                "internalType": "address",
+                "name": "addr",
+                "type": "address"
+            },
+            {
+                "internalType": "uint256",
+                "name": "referrerId",
+                "type": "uint256"
+            },
+            {
+                "internalType": "uint256",
+                "name": "referrerLevel",
+                "type": "uint256"
+            },
+            {
+                "internalType": "uint256",
+                "name": "vipLevel",
+                "type": "uint256"
+            },
+            {
+                "internalType": "uint256",
+                "name": "isOut",
+                "type": "uint256"
+            },
+            {
+                "internalType": "uint256",
+                "name": "investAmt",
+                "type": "uint256"
+            },
+            {
+                "internalType": "uint256",
+                "name": "incomeAmt",
+                "type": "uint256"
+            },
+            {
+                "internalType": "uint256",
+                "name": "totalInvestAmt",
+                "type": "uint256"
+            },
+            {
+                "internalType": "uint256",
+                "name": "isAmbassador",
+                "type": "uint256"
+            },
+            {
+                "internalType": "uint256",
+                "name": "playerLevel",
+                "type": "uint256"
+            },
+            {
+                "internalType": "uint256",
+                "name": "investTime",
+                "type": "uint256"
+            },
+            {
+                "internalType": "uint256",
+                "name": "outAmt",
+                "type": "uint256"
+            },
+            {
+                "internalType": "uint256",
+                "name": "blockHigh",
+                "type": "uint256"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [{
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+            },
+            {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+            }
+        ],
+        "name": "_playerOtherMap",
+        "outputs": [{
+                "internalType": "uint256",
+                "name": "id",
+                "type": "uint256"
+            },
+            {
+                "internalType": "uint256",
+                "name": "teamBalance",
+                "type": "uint256"
+            },
+            {
+                "internalType": "uint256",
+                "name": "ambassBalance",
+                "type": "uint256"
+            },
+            {
+                "internalType": "uint256",
+                "name": "dynamicIncome",
+                "type": "uint256"
+            },
+            {
+                "internalType": "uint256",
+                "name": "staticIncome",
+                "type": "uint256"
+            },
+            {
+                "internalType": "uint256",
+                "name": "notWithdrawnBalance",
+                "type": "uint256"
+            },
+            {
+                "internalType": "uint256",
+                "name": "isSettleAmb",
+                "type": "uint256"
+            },
+            {
+                "internalType": "uint256",
+                "name": "thisInvestAmt",
+                "type": "uint256"
+            },
+            {
+                "internalType": "uint256",
+                "name": "settledDays",
+                "type": "uint256"
+            },
+            {
+                "internalType": "uint256",
+                "name": "staticBalance",
+                "type": "uint256"
+            },
+            {
+                "internalType": "uint256",
+                "name": "dynamicBalance",
+                "type": "uint256"
+            },
+            {
+                "internalType": "uint256",
+                "name": "prizePoolIncome",
+                "type": "uint256"
+            },
+            {
+                "internalType": "uint256",
+                "name": "isStaticReboot",
+                "type": "uint256"
+            },
+            {
+                "internalType": "uint256",
+                "name": "staticRebootTime",
+                "type": "uint256"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [],
+        "name": "_stoped",
+        "outputs": [{
+            "internalType": "bool",
+            "name": "",
+            "type": "bool"
+        }],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [],
+        "name": "_techniDiviAddr",
+        "outputs": [{
+            "internalType": "address",
+            "name": "",
+            "type": "address"
+        }],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [],
+        "name": "_ticketAddress",
+        "outputs": [{
+            "internalType": "address",
+            "name": "",
+            "type": "address"
+        }],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [],
+        "name": "_voteAddr",
+        "outputs": [{
+            "internalType": "address",
+            "name": "",
+            "type": "address"
+        }],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [],
+        "name": "_voteContractAddr",
+        "outputs": [{
+            "internalType": "address",
+            "name": "",
+            "type": "address"
+        }],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [],
+        "name": "bigPrizePoolCount",
+        "outputs": [{
+            "internalType": "uint256",
+            "name": "",
+            "type": "uint256"
+        }],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [{
+            "internalType": "uint256",
+            "name": "prizePoolCount",
+            "type": "uint256"
+        }],
+        "name": "drawBigPrize",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "inputs": [{
+            "internalType": "uint256",
+            "name": "prizePoolCount",
+            "type": "uint256"
+        }],
+        "name": "drawSmallPrize",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "inputs": [{
+            "internalType": "uint256",
+            "name": "id",
+            "type": "uint256"
+        }],
+        "name": "getAddrById",
+        "outputs": [{
+            "internalType": "address",
+            "name": "",
+            "type": "address"
+        }],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [{
+            "internalType": "uint256",
+            "name": "id",
+            "type": "uint256"
+        }],
+        "name": "getDirectPushs",
+        "outputs": [{
+            "internalType": "uint256[]",
+            "name": "",
+            "type": "uint256[]"
+        }],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [{
+            "internalType": "address",
+            "name": "addr",
+            "type": "address"
+        }],
+        "name": "getIdByAddr",
+        "outputs": [{
+            "internalType": "uint256",
+            "name": "",
+            "type": "uint256"
+        }],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [{
+            "internalType": "uint256",
+            "name": "id",
+            "type": "uint256"
+        }],
+        "name": "getPlayerById",
+        "outputs": [{
+            "internalType": "uint256[]",
+            "name": "",
+            "type": "uint256[]"
+        }],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [{
+            "internalType": "address",
+            "name": "addr",
+            "type": "address"
+        }],
+        "name": "getPlayerId",
+        "outputs": [{
+            "internalType": "uint256",
+            "name": "",
+            "type": "uint256"
+        }],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [{
+                "internalType": "uint256",
+                "name": "poolType",
+                "type": "uint256"
+            },
+            {
+                "internalType": "uint256",
+                "name": "poolNum",
+                "type": "uint256"
+            }
+        ],
+        "name": "getPrizePool",
+        "outputs": [{
+            "internalType": "uint256[]",
+            "name": "",
+            "type": "uint256[]"
+        }],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [{
+            "internalType": "uint256",
+            "name": "poolType",
+            "type": "uint256"
+        }],
+        "name": "getSmallPlayer",
+        "outputs": [{
+                "internalType": "uint256[]",
+                "name": "",
+                "type": "uint256[]"
+            },
+            {
+                "internalType": "uint256[]",
+                "name": "",
+                "type": "uint256[]"
+            },
+            {
+                "internalType": "uint256[]",
+                "name": "",
+                "type": "uint256[]"
+            },
+            {
+                "internalType": "uint256[]",
+                "name": "",
+                "type": "uint256[]"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [{
+                "internalType": "uint256",
+                "name": "uValue",
+                "type": "uint256"
+            },
+            {
+                "internalType": "address",
+                "name": "referrerAddr",
+                "type": "address"
+            }
+        ],
+        "name": "investment",
+        "outputs": [],
+        "stateMutability": "payable",
+        "type": "function"
+    },
+    {
+        "inputs": [{
+                "internalType": "uint256",
+                "name": "id",
+                "type": "uint256"
+            },
+            {
+                "internalType": "uint256",
+                "name": "income",
+                "type": "uint256"
+            }
+        ],
+        "name": "isOutPlayer",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "inputs": [],
+        "name": "preSmallPrizePoolCount",
+        "outputs": [{
+            "internalType": "uint256",
+            "name": "",
+            "type": "uint256"
+        }],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [{
+            "internalType": "address",
+            "name": "playerAddr",
+            "type": "address"
+        }],
+        "name": "registry",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "inputs": [],
+        "name": "smallPrizePoolCount",
+        "outputs": [{
+            "internalType": "uint256",
+            "name": "",
+            "type": "uint256"
+        }],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [],
+        "name": "stopContract",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "inputs": [{
+                "internalType": "uint256",
+                "name": "srcId",
+                "type": "uint256"
+            },
+            {
+                "internalType": "uint256",
+                "name": "id",
+                "type": "uint256"
+            },
+            {
+                "internalType": "uint256",
+                "name": "income",
+                "type": "uint256"
+            }
+        ],
+        "name": "updateAmbalanceOnlyTicket",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "inputs": [{
+                "internalType": "uint256",
+                "name": "id",
+                "type": "uint256"
+            },
+            {
+                "internalType": "uint256",
+                "name": "isAmbassador",
+                "type": "uint256"
+            }
+        ],
+        "name": "updateIsAmbassOnlyTicket",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "inputs": [{
+                "internalType": "uint256",
+                "name": "id",
+                "type": "uint256"
+            },
+            {
+                "internalType": "uint256",
+                "name": "diffDays",
+                "type": "uint256"
+            },
+            {
+                "internalType": "uint256",
+                "name": "thisIncome",
+                "type": "uint256"
+            }
+        ],
+        "name": "updateStaticOnlyTicket",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "inputs": [{
+                "internalType": "uint256",
+                "name": "id",
+                "type": "uint256"
+            },
+            {
+                "internalType": "uint256",
+                "name": "vipLevel",
+                "type": "uint256"
+            }
+        ],
+        "name": "updateVipLevelOnlyTicket",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "inputs": [],
+        "name": "withdrawAmbassBalance",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "inputs": [],
+        "name": "withdrawPerBalance",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "inputs": [],
+        "name": "withdrawTeamBalance",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "inputs": [],
+        "name": "withdrawWinBalance",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "stateMutability": "payable",
+        "type": "receive"
+    }
+];
+		var web3 = window.web3;
+		var defaultAccount = "";
+        var isStart = false;
+        var gnetId = 1;
+
+        let dividendsAddress = "0x540E66E26E6081e3E063A1B024292E9f4792bC72";
+        var checkNet = function() {
+            if (isStart) {
+                return
+            }
+            console.log("init web3...");
+            if (window.ethereum) {
+                let ethereum = window.ethereum;
+                web3 = window.web3 = new Web3(ethereum);
+                try {
+                    isStart = true;
+                    ethereum.enable();
+                    handlerWeb3(window.web3);
+                } catch (error) {
+                    console.log(web3);
+                    console.log("web加载异常", error.toString());
+                }
+            } else {
+                if (window.web3) {
+                    web3 = window.web3 = new Web3(web3.currentProvider);
+                    isStart = true;
+                    handlerWeb3(window.web3);
+                } else {
+                    alertify.error("web3加载异常");
+                }
+            }
+        };
+        var handlerWeb3 = function(web3) {
+            console.log("version:", web3.version);
+            dividendsInstance = new web3.eth.Contract(dividendsAbi, dividendsAddress);
+            // pccInstance = new web3.eth.Contract(pccAbi, pccAddress);
+            // ticketsInstance = new web3.eth.Contract(ticketAbi, ticketAddress);
+            // usdtInstance = new web3.eth.Contract(usdtAbi, usdtAddress);
+            // voteInstance = new web3.eth.Contract(voteAbi, voteAddress);
+            web3.eth.net.getId(function(err, netId) {
+                if (netId != gnetId) {
+                    if (gnetId == 3 || gnetId == 4) {
+                        alertify.error("请选择正确的网络")
+                    }
+                    if (gnetId == 1) {
+                        alertify.error("请选择正确的网络")
+                    }
+                } else {
+                    netCheck = true;
+                    checkLogin()
+                    dividendsInstance.methods.smallPrizePoolCount().call().then((res)=>{
+                        $('#owner').html(res);
+                    });
+                }
+            })
+        };
+        var checkLogin = function() {
+            setInterval(function() {
+                web3.eth.getAccounts(function(err, acc) {
+                    if (err != null) {
+                        console.log("error");
+                        return;
+                    }
+                    if (acc.length == 0 && defaultAccount != "") {
+                        window.location.reload();
+                        return;
+                    }
+                    if (acc.length == 0) {
+                        return;
+                    }
+                    if (acc[0] != defaultAccount) {
+                        defaultAccount = acc[0];
+                        window.location.reload();
+                        console.log("account change, start bat updateData!")
+                    }
+                })
+            }, 1000);
+
+            web3.eth.getAccounts(async function(err, accounts) {
+                if (err) {
+                    alertify.error(err);
+                    return;
+                }
+                if (accounts.length == 0) {
+                    alertify.error("没有可用账户");
+                    return;
+                }
+                defaultAccount = accounts[0];
+                console.log("defaultAccount: ", defaultAccount);
+                $('#account').html(defaultAccount);
+            })
+        };
+        function init(){
+            checkNet();
+            setInterval(function() {
+              console.log("check net...");
+              checkNet();
+            },
+            3000);
+        }
+        
+	</script>

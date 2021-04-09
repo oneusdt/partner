@@ -1,0 +1,171 @@
+.loading {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: auto 0;
+    background-image: url('/img/loading.jpg');
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    opacity: 0.8;
+    z-index: 1040;
+}
+
+@keyframes turn {
+    0% {
+        -webkit-transform: rotate(0deg);
+    }
+    25% {
+        -webkit-transform: rotate(90deg);
+    }
+    50% {
+        -webkit-transform: rotate(180deg);
+    }
+    75% {
+        -webkit-transform: rotate(270deg);
+    }
+    100% {
+        -webkit-transform: rotate(360deg);
+    }
+}
+
+.loading-none {
+    display: none;
+}
+
+.subpage-purchase .ui.label,
+[data-is="subpage-purchase"] .ui.label {
+    text-align: center
+}
+
+subpage-purchase .ui.label .icon.ethereum,
+[data-is="subpage-purchase"] .ui.label .icon.ethereum {
+    text-align: center;
+    margin: 0
+}
+
+subpage-purchase .purchas-keys-buttons,
+[data-is="subpage-purchase"] .purchas-keys-buttons {
+    display: flex;
+    flex-wrap: nowrap
+}
+
+subpage-purchase .purchas-keys-buttons div,
+[data-is="subpage-purchase"] .purchas-keys-buttons div {
+    line-height: 1.5rem;
+    flex: 1;
+    text-align: center;
+    border: 1px solid #ff8031;
+    border-right: 0
+}
+
+subpage-purchase .purchas-keys-buttons div:nth-child(1),
+[data-is="subpage-purchase"] .purchas-keys-buttons div:nth-child(1) {
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px
+}
+
+subpage-purchase .purchas-keys-buttons div,
+[data-is="subpage-purchase"] .purchas-keys-buttons div {
+    color: #d37d4a;
+    margin-top: 1.5rem;
+    transition: .3s ease-in-out all;
+    cursor: pointer
+}
+
+subpage-purchase .purchas-keys-buttons div:hover,
+[data-is="subpage-purchase"] .purchas-keys-buttons div:hover {
+    background: #ff8031;
+    color: white
+}
+
+subpage-purchase .purchas-keys-buttons div:last-child,
+[data-is="subpage-purchase"] .purchas-keys-buttons div:last-child {
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+    border-right: 1px solid #ff8031
+}
+
+subpage-purchase .purchas-keys-buttons div:nth-child(1),
+[data-is="subpage-purchase"] .purchas-keys-buttons div:nth-child(1),
+subpage-purchase .purchas-keys-buttons div:nth-child(2),
+[data-is="subpage-purchase"] .purchas-keys-buttons div:nth-child(2) {
+    flex: 1;
+    line-height: 3rem
+}
+
+.list-line div {
+    line-height: 30px;
+    height: 30px;
+}
+
+.divider {
+    height: 1px;
+    line-height: 1px;
+    border-bottom: 1px solid rgba(255, 255, 255, .1)
+}
+
+.list-line .ds {
+    /*width: 500px;*/
+    height: 180px;
+    /*border: 1px solid;*/
+    /*overflow-x: scroll;*/
+    overflow-y: scroll;
+    /*height: auto;*/
+    /*overflow: visible;*/
+}
+
+.list-line ::-webkit-scrollbar {
+    display: none;
+}
+.open .dropdown-menu{
+    background-color: transparent;
+}
+.open .dropdown-menu > li > a{
+    font-weight: 400;
+    line-height: 1.42857143;
+    color: rgb(241, 237, 237);
+    white-space: nowrap;
+}
+.open .dropdown-menu > li > a:hover {
+    color: white;
+    background-color: #ad33ff !important;
+}
+
+.open .navbar-toggle .icon-bar {
+    display: block;
+    width: 22px;
+    height: 2px;
+    border-radius: 1px;
+}
+
+
+.navbar-toggle-left {
+    position: relative;
+    float: right;
+    padding: 9px 10px;
+    margin-top: 8px;
+    margin-right: 15px;
+    margin-bottom: 8px;
+    background-color: transparent;
+    background-image: none;
+    border: 1px solid transparent;
+    border-radius: 4px
+}
+
+.navbar-toggle-left:focus {
+    outline: 0
+}
+
+.navbar-toggle-left .icon-bar {
+    display: block;
+    width: 22px;
+    height: 2px;
+    border-radius: 1px;
+    background-color: white !important;
+}
+.navbar-toggle-left .icon-bar + .icon-bar {
+    margin-top: 4px;
+}

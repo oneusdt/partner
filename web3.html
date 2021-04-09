@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta name="apple-touch-fullscreen" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit">
+	<title>Web3TP兼容测试</title>
+	<script type="text/javascript" src="static/jquery-1.8.1.min.js"></script>
+</head>
+<body>
+	当前账户：
+	<div id="account">
+		
+	</div>
+	小奖池编号:
+	<div id="owner"></div>
+	<script src="web3.min.js"></script>
+	<script src="static/alertify.js"></script>
+	<script src="https://cdn.bootcdn.net/ajax/libs/vConsole/3.3.4/vconsole.min.js"></script>
+    <script>
+        new VConsole();
+    </script>
+    <div id="lazy"></div>
+    
+</body>
+
+<script type="text/javascript">
+    $(function(){
+        setTimeout(function(){
+            console.log("延时加载。。。");
+            $.get("/lazy.html",function(res){
+                        console.log(res);
+                        // window.web3 = undefined;
+                        // window.Web3 = undefined;
+                        $("#lazy").append(res);
+                        init();
+                    });    
+        },3000);
+           
+    });
+</script>
+</html>
