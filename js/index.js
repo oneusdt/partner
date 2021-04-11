@@ -604,7 +604,7 @@ $(document).ready(function() {
             return;
         });
  
-        if (Number(usdtBalance) < Number(usdtEtherValue)) {
+        if (parseFloat(usdtBalance/usdtBase) < parseFloat(usdtEtherValue/usdtBase)) {
             alertify.error("USDT " + tipl[34]);
             return;
         }
